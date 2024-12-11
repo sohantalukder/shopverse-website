@@ -37,6 +37,7 @@ interface Props {
   labelStyle?: TypographyStyle;
   inputStyle?: InputBaseProps['sx'];
   containerStyle?: StackProps['sx'];
+  autoComplete?: string;
 }
 const TextInput: React.FC<Props> = ({
   label,
@@ -52,7 +53,8 @@ const TextInput: React.FC<Props> = ({
   rows,
   labelStyle,
   inputStyle,
-  containerStyle
+  containerStyle,
+  autoComplete
 }) => {
   const [inputValue, setInputValue] = useState<string>(value || defaultValue || '');
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -82,6 +84,7 @@ const TextInput: React.FC<Props> = ({
         required={required}
         multiline={multiline}
         disabled={disabled}
+        autoComplete={autoComplete}
       />
     </Stack>
   );

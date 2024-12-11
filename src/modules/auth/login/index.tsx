@@ -1,6 +1,9 @@
 import { Box, Stack, Typography } from '@mui/material';
 import imageLink from '../../../assets/images/imageLink';
 import TextInput from '../../../components/text-input/TextInput.c';
+import CustomButton from '../../../components/custom-button/CustomButton.c';
+import { Link } from 'react-router-dom';
+import routeName from '../../../router/routeName';
 
 const Login: React.FC = () => {
   return (
@@ -9,8 +12,8 @@ const Login: React.FC = () => {
         component="img"
         src={imageLink.loginBackground}
         sx={{
-          display: { xs: 'none', lg: 'block' }, // Hide on xs and sm, show on md and up
-          width: { md: '50%' }, // 50% width on md and larger screens
+          display: { xs: 'none', lg: 'block' },
+          width: { md: '50%' },
           objectFit: 'cover'
         }}
         alt="Login Background Image"
@@ -25,7 +28,37 @@ const Login: React.FC = () => {
           </Typography>
           <Box mt={4}>
             <Stack spacing={2}>
-              <TextInput />
+              <TextInput
+                placeholder="Enter your email"
+                label="Email Address"
+                type="email"
+                autoComplete="email"
+                required
+              />
+              <TextInput
+                placeholder="Enter your password"
+                label="Password"
+                type="password"
+                required
+              />
+              <Stack spacing={2} direction={'row'} justifyContent={'space-between'} width={'100%'}>
+                <Link to={routeName.forgotPassword} style={{ textDecoration: 'none' }}>
+                  <Typography variant="subtitle2" color={'text.primary'}>
+                    Forgot password
+                  </Typography>
+                </Link>
+                <Stack direction={'row'} spacing={0.5}>
+                  <Typography variant="subtitle2" color={'text.secondary'}>
+                    Don't have an account?
+                  </Typography>
+                  <Link to={routeName.signUp} style={{ textDecoration: 'none' }}>
+                    <Typography variant="subtitle2" color={'primary'}>
+                      Sign up
+                    </Typography>
+                  </Link>
+                </Stack>
+              </Stack>
+              <CustomButton text="Login" />
             </Stack>
           </Box>
         </Box>
